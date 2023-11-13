@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Create an album{% endblock %}
+{% block content %}
+{% if exists %}
+<p><strong>You already have an album with that name. Try again.</strong></p>
+{% endif %}
+<body>
+  <form method="post">
+    <label for="album-name">New album name:</label>
+    <input name="album-name" type="text" value=""/>
+    <input type="submit" value="Create album"/>
+  </form>
+</body>
+{% endblock %}

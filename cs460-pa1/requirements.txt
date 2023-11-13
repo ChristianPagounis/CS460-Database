@@ -1,0 +1,8 @@
+Flask
+Flask-Login
+flask-mysql
+Flask-SQLAlchemy
+passlib
+requests
+Werkzeug
+

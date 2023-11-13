@@ -1,0 +1,27 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+{% if name %}
+<h2>Hello {{name}}!</h2>
+{% endif %}
+
+{% if photos %}
+<h2>Here are your photos</h2>
+  <ul>
+    {% for photo in photos %}
+      <li>{{photo[2]}}<br>
+        <img src='data:image/jpg;base64,
+                  {{ base64.b64encode(photo[0]).decode("ascii") }}'/></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if message is none %}
+  <p>You should <a href='/login'>login!</a></p>
+{% else %}
+  <p>{{ message }}</p>
+{% endif %}
+{% endblock %}

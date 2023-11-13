@@ -1,0 +1,31 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px 5px;
+}
+
+tr.odd {
+    background-color: #eaeaea;
+}
+tr.even {
+    background-color: #fff;
+}
+
+td>a>img {
+    max-width: 300px;
+    max-height: auto;
+}
+
+img {
+    max-width: 1368px;
+    max-height: auto;
+}
+
+img.thumbnail {
+    max-height: 64px;
+    max-width: auto;
+}
+
+ul {
+    padding-left: 25px;
+}

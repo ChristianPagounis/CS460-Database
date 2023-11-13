@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Find Friends{% endblock %}
+
+{% block content %}
+<h2>Find Friends</h2>
+
+{% if users %}
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  {% for u in users %}
+  <tr class="{{ loop.cycle('odd', 'even') }}">
+    <td>{{ u[0] }}</td>
+    <td>
+      <form method="post" action="/friends/add/{{u[1]}}">
+        <button>Add friend</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<h3>{{message}}</h3>
+{% endif %}
+
+{% endblock %}

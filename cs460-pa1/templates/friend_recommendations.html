@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Friend recommendations{% endblock %}
+
+{% block content %}
+<h2>Friend recommendations</h2>
+
+{% if recs %}
+<p>People you might know:</p>
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  {% for r in recs %}
+  <tr class="{{ loop.cycle('odd', 'even') }}">
+    <td>{{ r[1] }}</td>
+    <td>
+      <form method="post" action="/friends/add/{{r[0]}}">
+        <button>Add friend</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<h3>{{message}}</h3>
+{% endif %}
+
+{% endblock %}

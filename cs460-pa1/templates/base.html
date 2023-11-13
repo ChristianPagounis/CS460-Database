@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+    <title>{% block title %}{% endblock %} - Photoshare</title>
+    {% block html_head %}
+    <h1>Photoshare</h1>
+    {% endblock %}
+  </head>
+  <body>
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
+    <div id="footer">
+      {% block footer %}
+      <ul>
+        <li><strong>Albums</strong>
+          <ul>
+            {% if current_user.is_authenticated %}
+            <li><a href="/albums/create">Create an album</a></li>
+            <li><a href="/albums/delete/">Delete an album</a></li>
+            {% endif %}
+            <li><a href="/albums/">View all albums</a></li>
+          </ul>
+        </li>
+        {% if current_user.is_authenticated %}
+        <li><strong>Photos</strong>
+          <ul>
+            <li><a href="/photos/delete">Delete a photo</a></li>
+            <li><a href='/upload'>Upload a photo</a> </li>
+          </ul>
+        </li>
+        {% endif %}
+        <li>
+          <strong>Social</strong>
+          <ul>
+            {% if current_user.is_authenticated %}
+            <li>
+              Friends
+              <ul>
+                <li><a href="/friends/find">Find Friends</a></li>
+                <li>
+                  <a href="/friends/recommended">People you might know</a>
+                </li>
+                <li><a href="/friends/">Your Friend List</a></li>
+              </ul>
+            </li>
+            {% endif %}
+            <li>
+              Tags
+              <ul>
+                <li><a href="/tags">All tags</a></li>
+                <li><a href="/tags/search">Search tagged photos</a></li>
+                <li><a href="/tags/top-five">Top five tags</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/top-users">Top users</a>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Session</strong>
+          <ul>
+            <li><a href='/'>Home</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="/profile">Profile</a></li>
+            <li><a href='/logout'>Logout</a></li>
+            {% else %}
+            <li><a href="/register">Sign up</a></li>
+            <li><a href="/login">Log in</a></li>
+            {% endif %}
+          </ul>
+        </li>
+      </ul>
+      {% endblock %}
+    </div>
+  </body>
+</html>

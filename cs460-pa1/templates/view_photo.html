@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}View Photo - {{ photo[1] }}{% endblock %}
+
+{% block content %}
+<h2>{{ photo[1] }} by {{ photo[2] }}</h2>
+{% if message %}
+<h3>{{ message }}</h3>
+{% endif %}
+<br/>
+<img src='data:image/jpg;base64,
+          {{ base64.b64encode(photo[0]).decode("ascii") }}'/>
+
+<div id="social">
+  <p>
+    Tags:
+    {% for t in tags %}
+    <a href="/tags/view/{{t[0]}}">{{t[1]}}</a>
+    {% endfor %}
+  </p>
+
+  <p>Likes: {{ like_count }}</p>
+  <form method="POST">
+      <input name="like" type="submit" value="Like"/>
+  </form>
+  <table>
+    {% for name in likes_names %}
+    <tr class="{{ loop.cycle('odd','even') }}">
+      <td>
+        {{name}}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div id="comments">
+    <form method="POST">
+      <textarea cols="40" id="" name="comment" rows="2" required></textarea>
+      <input name="comment-submit" type="submit" value="Comment"/>
+    </form>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Comment</th>
+        <th>Posted by</th>
+      </tr>
+      {% for comment in comments %}
+      <tr>
+        <td>{{ comment[0] }}</td>
+        <td>{{ html.unescape(comment[1]) }}</td>
+        <td>{{ comment[2] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% endblock %}

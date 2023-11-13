@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Tag '{{tag}}' {% endblock %}
+
+{% block content %}
+<h2>Tag '{{tag}}' on Photoshare</h2>
+
+<form method='post'>
+  <label for="all-user-toggle">Show pictures by all users</label>
+  <input name="all-user-toggle" type="checkbox"/>
+  <input name="all-user-submit" type="submit" value="Submit"/>
+</form>
+
+<table>
+  {% for pic in pictures %}
+  <tr>
+    <td>{{pic[0]}}</td> <!-- name -->
+    <td><a href="/albums/view/{{pic[3]}}">{{pic[5]}}</a></td> <!-- album -->
+    <td><a href="/photos/view/{{pic[1]}}"><img src='data:image/jpg;base64,
+                             {{ base64.b64encode(pic[2]).decode("ascii") }}'/></a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

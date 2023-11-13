@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Top Users{% endblock %}
+
+{% block content %}
+<h2>Top users on Photoshare</h2>
+
+<ul>
+  {% for u in users %}
+  <li>
+    {{ u[1] }}: {{ u[2] }}
+    {% if u[2] == 1 %} contribution {% else %} contributions {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

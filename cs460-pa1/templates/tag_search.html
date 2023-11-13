@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Tag search{% endblock %}
+
+{% block content %}
+<h2>Search for tagged photos</h2>
+
+<form method='post'>
+  <label for="tags">Search for tag: </label>
+  <input name="tags" type="text" placeholder="tag1, tag2, ..." value=""/>
+  <input name="tag-submit" type="submit"/>
+</form>
+
+{% endblock %}

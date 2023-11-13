@@ -1,0 +1,25 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+
+{% extends "base.html" %}
+
+{% block title %}Upload a photo{% endblock %}
+{% block content %}
+  <body>
+    <form method="post" enctype="multipart/form-data" action="/upload">
+      <label for="photo">Select photo:</label>
+      <input type="file" name="photo" required='true' /><br />
+      <label for="caption">Please caption:</label>
+      <input type="text" name="caption" required='true' /><br />
+      <label for="tags">Tag your photo:</label>
+      <input name="tags" type="text"
+             placeholder="tag1, tag2" value=""/><br/>
+      <label for="album_name">Add photo to album:</label>
+      <select id="album_name" name="album_name">
+        {% for row in rows %}
+        <option value="{{ row[0] }}">{{ row[0] }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Upload" />
+    </form>
+  </body>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Delete an album{% endblock %}
+{% block content %}
+<body>
+  {% if empty %}
+  <h2>{{message}}</h2>
+  {% else %}
+    <form method="post">
+      <label for="album-choice">Choose an album to delete:</label>
+      <table>
+        {% for album in albums %}
+        <tr>
+          <td>
+            {{ album[2] }}
+          </td>
+          <td>
+            <form method="post">
+              <input name="album-id" type="submit"
+                     formaction="/albums/delete/{{album[0]}}"
+                     value="Delete"/>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      </table>
+    </form>
+    {% endif %}
+  </body>
+{% endblock %}

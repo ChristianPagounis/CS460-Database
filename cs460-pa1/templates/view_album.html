@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}View Album - {{ album_title }}{% endblock %}
+
+{% block content %}
+<h2>{{ album_title }} by {{ uploader }}</h2>
+
+{% if empty %}
+<h2>This album is empty</h2>
+{% else %}
+  <ul>
+    {% for photo in photos %}
+      <li>{{photo[1]}}<br>
+        <a href="/photos/view/{{photo[2]}}"><img src='data:image/jpg;base64,
+                             {{ base64.b64encode(photo[0]).decode("ascii") }}'/>
+        </a>
+      </li>
+      <br/>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% endblock %}

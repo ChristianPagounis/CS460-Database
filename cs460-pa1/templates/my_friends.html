@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Your Friends{% endblock %}
+
+{% block content %}
+<h2>Your Friends</h2>
+
+{% if empty %}
+<h2>You don't have any friends yet.  Go find some!</h2>
+{% else %}
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  {% for fr in friends %}
+  <tr class="{{ loop.cycle('odd', 'even') }}">
+    <td>{{ fr[1] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

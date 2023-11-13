@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Tags{% endblock %}
+
+{% block content %}
+<h2>Tags on Photoshare</h2>
+
+<table>
+  <tr>
+    <th>Tag</th>
+  </tr>
+  {% for tag in tags %}
+  <tr>
+    <td>
+      <a href="/tags/view/{{tag[2]}}">{{ tag[1] }}</a>: {{ tag[0] }}
+      {% if tag[0] == 1 %} picture {% else %} pictures {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

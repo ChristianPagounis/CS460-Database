@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Delete a photo{% endblock %}
+{% block content %}
+<form method="post">
+  <label for="photo-choice">Choose a photo to delete:</label>
+  <table>
+    {% for pic in pics %}
+    <tr>
+      <td>
+        <img class="thumbnail"
+             src='data:image/jpg;base64,
+                  {{ base64.b64encode(pic[2]).decode("ascii") }}'/>
+      </td>
+      <td>
+        <form method="post">
+          <input name="pic-id" type="submit"
+                 formaction="/photos/delete/{{pic[0]}}"
+                 value="Delete"/>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+{% endblock %}
